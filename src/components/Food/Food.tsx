@@ -83,6 +83,8 @@ interface UIProps {
 const Container = styled.div`
     background: #f0f0f5;
     border-radius: 8px;
+    display: flex;
+    flex-flow: column;
 `;
 
 const ImageWrapper = styled.header<UIProps>`
@@ -106,6 +108,7 @@ const ProductImage = styled.img`
 `;
 
 const ProductInfo = styled.body`
+    flex-grow: 1;
     padding: 30px;
     background: revert; // better yet would be a css reset
 `;

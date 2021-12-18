@@ -27,11 +27,11 @@ export function Header({ openModal }: HeaderProps) {
 
 const Wrapper = styled.header`
     background: #c72828;
-    padding: 30px 0;
+    padding: 30px 24px;
 `;
 
 const Content = styled.header`
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 0 160px;
     display: flex;
