@@ -2,7 +2,7 @@ import { Component, createRef } from "react";
 import { FiCheckSquare } from "react-icons/fi";
 
 import { Form } from "./styles";
-import Modal from "../Modal";
+import { Modal } from "../Modal";
 import { Input } from "../Input";
 
 class ModalEditFood extends Component {
@@ -23,7 +23,7 @@ class ModalEditFood extends Component {
         const { isOpen, setIsOpen, editingFood } = this.props;
 
         return (
-            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+            <Modal isOpen={isOpen} toggleIsOpen={setIsOpen}>
                 <Form
                     ref={this.formRef}
                     onSubmit={this.handleSubmit}
