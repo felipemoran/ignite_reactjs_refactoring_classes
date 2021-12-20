@@ -18,6 +18,8 @@ export function ModalAddEditFood({
     handleSubmit,
     initialFoodData,
 }: ModalAddEditFoodProps) {
+    const isEdit = initialFoodData !== undefined;
+
     return (
         <Modal isOpen={isOpen} toggleIsOpen={toggleIsOpen}>
             <Form
@@ -27,9 +29,7 @@ export function ModalAddEditFood({
                 }}
                 initialData={initialFoodData}
             >
-                <ModalTitle>
-                    {initialFoodData === undefined ? "Editar" : "Novo"} Prato
-                </ModalTitle>
+                <ModalTitle>{isEdit ? "Editar" : "Novo"} Prato</ModalTitle>
                 <Input name="image" placeholder="Cole o link aqui" />
 
                 <Input name="name" placeholder="Ex: Moda Italiana" />
@@ -37,7 +37,9 @@ export function ModalAddEditFood({
 
                 <Input name="description" placeholder="Descrição" />
                 <AddFoodButton type="submit" data-testid="add-food-button">
-                    <ButtonText>Adicionar Prato</ButtonText>
+                    <ButtonText>
+                        {isEdit ? "Editar" : "Adicionar"} Prato
+                    </ButtonText>
                     <IconWrapper>
                         <FiCheckSquare size={24} />
                     </IconWrapper>
