@@ -5,10 +5,10 @@ import styled, { css } from "styled-components";
 
 interface InputProps {
     name: string;
-    rest?: object;
+    placeholder: string;
 }
 
-export function Input({ name, ...rest }: InputProps) {
+export function Input({ name, placeholder }: InputProps) {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const [isFocused, setIsFocused] = useState(false);
@@ -38,7 +38,7 @@ export function Input({ name, ...rest }: InputProps) {
                 }}
                 defaultValue={defaultValue}
                 ref={inputRef}
-                {...rest}
+                placeholder={placeholder}
             />
         </Container>
     );

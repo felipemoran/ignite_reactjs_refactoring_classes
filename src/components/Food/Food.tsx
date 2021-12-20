@@ -107,7 +107,7 @@ const ProductImage = styled.img`
     user-select: none;
 `;
 
-const ProductInfo = styled.body`
+const ProductInfo = styled.div`
     flex-grow: 1;
     padding: 30px;
     background: revert; // better yet would be a css reset
