@@ -1,1 +1,0 @@
-export { ModalAddFood } from "./ModalAddFood";

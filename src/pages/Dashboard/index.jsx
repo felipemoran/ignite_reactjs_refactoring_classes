@@ -3,8 +3,7 @@ import { Component } from "react";
 import { Header } from "../../components/Header";
 import api from "../../services/api";
 import { Food } from "../../components/Food";
-import { ModalAddFood } from "../../components/ModalAddFood";
-import ModalEditFood from "../../components/ModalEditFood";
+import { ModalAddEditFood } from "../../components/ModalAddEditFood";
 import { FoodsContainer } from "./styles";
 
 class Dashboard extends Component {
@@ -68,7 +67,7 @@ class Dashboard extends Component {
         this.setState({ foods: foodsFiltered });
     };
 
-    toggleModal = () => {
+    toggleAddModal = () => {
         const { modalOpen } = this.state;
 
         this.setState({ modalOpen: !modalOpen });
@@ -89,17 +88,17 @@ class Dashboard extends Component {
 
         return (
             <>
-                <Header openModal={this.toggleModal} />
-                <ModalAddFood
+                <Header openModal={this.toggleAddModal} />
+                <ModalAddEditFood
                     isOpen={modalOpen}
-                    toggleIsOpen={this.toggleModal}
-                    handleAddFood={this.handleAddFood}
+                    toggleIsOpen={this.toggleAddModal}
+                    handleSubmit={this.handleAddFood}
                 />
-                <ModalEditFood
+                <ModalAddEditFood
                     isOpen={editModalOpen}
-                    setIsOpen={this.toggleEditModal}
-                    editingFood={editingFood}
-                    handleUpdateFood={this.handleUpdateFood}
+                    toggleIsOpen={this.toggleEditModal}
+                    initialFoodData={editingFood}
+                    handleSubmit={this.handleUpdateFood}
                 />
 
                 <FoodsContainer data-testid="foods-list">

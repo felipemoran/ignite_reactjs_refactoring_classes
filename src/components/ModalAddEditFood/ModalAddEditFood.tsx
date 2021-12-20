@@ -5,26 +5,31 @@ import styled from "styled-components";
 import { Form as Unform } from "@unform/web";
 import { FoodType } from "../../types";
 
-interface ModalAddFoodProps {
+interface ModalAddEditFoodProps {
     isOpen: boolean;
     toggleIsOpen: () => void;
-    handleAddFood: (food: FoodType) => void;
+    handleSubmit: (food: FoodType) => void;
+    initialFoodData?: FoodType;
 }
 
-export function ModalAddFood({
+export function ModalAddEditFood({
     isOpen,
     toggleIsOpen,
-    handleAddFood,
-}: ModalAddFoodProps) {
-    function handleSubmit(data: FoodType) {
-        handleAddFood(data);
-        toggleIsOpen();
-    }
-
+    handleSubmit,
+    initialFoodData,
+}: ModalAddEditFoodProps) {
     return (
         <Modal isOpen={isOpen} toggleIsOpen={toggleIsOpen}>
-            <Form onSubmit={handleSubmit}>
-                <ModalTitle>Novo Prato</ModalTitle>
+            <Form
+                onSubmit={(data: FoodType) => {
+                    handleSubmit(data);
+                    toggleIsOpen();
+                }}
+                initialData={initialFoodData}
+            >
+                <ModalTitle>
+                    {initialFoodData === undefined ? "Editar" : "Novo"} Prato
+                </ModalTitle>
                 <Input name="image" placeholder="Cole o link aqui" />
 
                 <Input name="name" placeholder="Ex: Moda Italiana" />
